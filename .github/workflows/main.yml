@@ -8,6 +8,7 @@ on:
     - cron: "0 0 * * 0" # 每周日8点，Github 0点
   watch:
     types: [started]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -36,3 +37,6 @@ jobs:
       working-directory: ./token
       run: | 
         python run.py
+
+    - name: keep alive
+      uses: gautamkrishnar/keepalive-workflow@master # keep workflows from being suspended when no commit for a long time
